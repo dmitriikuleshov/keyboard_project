@@ -58,6 +58,9 @@ main_body{
         <pointsize>16</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
      </widget>
     </item>
     <item>
@@ -75,9 +78,7 @@ main_body{
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(204, 204, 204);
-background-color: rgb(65, 53, 53);
-color: rgb(232, 232, 232);</string>
+       <string notr="true">color: rgb(0, 0, 0);</string>
       </property>
      </widget>
     </item>

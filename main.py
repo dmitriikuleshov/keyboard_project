@@ -174,7 +174,7 @@ class MyWidget(QMainWindow):
         threading.Timer(0.1, lambda: button.setStyleSheet('background-color: rgb(34, 34, 34);')).start()
 
     def check_answer(self, state):
-        if state == QtCore.Qt.Сhecked:
+        if state:
             self.columnView.move(100, 40)
         else:
             self.columnView.move(160, 330)
