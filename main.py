@@ -31,7 +31,7 @@ class MyWidget(QMainWindow):
         # ЧЕКБОКС КЛАВИАТУРЫ
         self.show_keyboard_checkBox.stateChanged.connect(self.check_answer)
         # ДЕФОЛТНЫЙ ТЕКСТ
-        self.plainTextEdit_2.setPlainText('Я прохожу урок')
+        self.plainTextEdit_2.setPlainText('Привет, я помогу тебе научиться печатать вслепую!')
         # РЕЖИМЫ: УРОК И ПРАКТИКА
         self.it_is_Practice = False
         self.btn_Practice.clicked.connect(self.change_mods)
@@ -80,12 +80,14 @@ class MyWidget(QMainWindow):
         self.btn_str3_11.clicked.connect(self.change_color)
         self.btn_str3_11.clicked.connect(self.show_keyboard_color_changed)
         #########################################################################################################
-        #   ЗАТЕМНЕНИЕ КНОПОК ПОСЛЕ НАЖАТИЯ #####################################################################
+        #   ЗАТЕМНЕНИЕ ТЕКСТА #####################################################################
         #########################################################################################################
         self.used_buttons = []
         self.plainTextEdit.textChanged.connect(self.click_change_color)
         self.plainTextEdit.textChanged.connect(self.text_is_printed)
+        self.plainTextEdit.textChanged.connect(self.wrong_text)
         self.len_of_text = 0
+        self.text_in_PTE_2 = self.plainTextEdit_2.toPlainText()
         #########################################################################################################
         #   ИЗМЕНЕНИЕ ТЕКСТА PRACTICE, LESSONS ##################################################################
         #########################################################################################################
@@ -136,8 +138,11 @@ class MyWidget(QMainWindow):
         else:
             self.len_of_text -= 1
             self.btn_backspace.setStyleSheet("background-color: rgb(115, 115, 115);")
-            self.used_buttons.append(self.btn_backspace)
-            threading.Timer(0.3, self.del_from_color_list).start()
+            threading.Timer(0.1, lambda: self.btn_backspace.setStyleSheet(self.main_style)).start()
+            for button in self.my_buttons_to_change_all_colors:
+                if button != self.btn_backspace:
+                    button.setStyleSheet(self.main_style)
+            self.used_buttons.clear()
 
     def del_from_color_list(self):
         if bool(self.used_buttons):
@@ -216,6 +221,19 @@ class MyWidget(QMainWindow):
             if self.plainTextEdit.toPlainText() == self.plainTextEdit_2.toPlainText():
                 time.sleep(0.1)
                 self.plainTextEdit_2.setPlainText('Вы прошли урок!')
+                threading.Timer(1, lambda: self.plainTextEdit.setPlainText('')).start()
+
+    def wrong_text(self):
+        text = self.plainTextEdit.toPlainText()
+        text2 = self.plainTextEdit_2.toPlainText()
+        if text != text2[:len(text)]:
+            if text2 == self.text_in_PTE_2:
+                self.plainTextEdit.setStyleSheet('color: rgb(255, 0, 0);')
+            else:
+                self.plainTextEdit.setStyleSheet('color: rgb(232, 232, 232);')
+                self.text_in_PTE_2 = text2
+        else:
+            self.plainTextEdit.setStyleSheet('color: rgb(232, 232, 232);')
 
 
 #############################################################################################################

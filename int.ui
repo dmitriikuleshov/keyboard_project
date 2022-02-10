@@ -58,9 +58,6 @@ main_body{
         <pointsize>16</pointsize>
        </font>
       </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 0, 0);</string>
-      </property>
      </widget>
     </item>
     <item>
@@ -78,7 +75,9 @@ main_body{
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(0, 0, 0);</string>
+       <string notr="true">color: rgb(232, 232, 232);
+selection-background-color: rgb(116, 176, 255);
+background-color: rgb(85, 85, 127);</string>
       </property>
      </widget>
     </item>
@@ -2216,7 +2215,7 @@ alternate-background-color: rgb(183, 248, 255);</string>
               <string notr="true">background-color: rgb(255, 206, 108);</string>
              </property>
              <property name="text">
-              <string> </string>
+              <string/>
              </property>
             </widget>
             <widget class="QPushButton" name="btn_str3_11">
