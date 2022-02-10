@@ -217,6 +217,7 @@ class MyWidget(QMainWindow):
                     end = 'a'
                 self.plainTextEdit_2.setPlainText(
                     f'Ваша скорость печати: {speed} символ{end} в минуту.')
+                threading.Timer(1, lambda: self.plainTextEdit.setPlainText('')).start()
         else:
             if self.plainTextEdit.toPlainText() == self.plainTextEdit_2.toPlainText():
                 time.sleep(0.1)
