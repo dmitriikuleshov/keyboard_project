@@ -115,11 +115,12 @@ class MyWidget(QMainWindow):
         self.time = 0
         self.timeInterval = 1000
         ########################################################################################################
+        self.btn_Practice.clicked.connect(lambda: self.click_change_color(practice_or_lesson=True))
 
     #########################################################################################################
     # __НЕ ИЗМЕНЯТЬ__ #######################################################################################
     #########################################################################################################
-    def click_change_color(self):
+    def click_change_color(self, practice_or_lesson=False):
         changed_len = len(self.plainTextEdit.toPlainText())
         if changed_len > self.len_of_text:
             self.len_of_text += 1
@@ -136,13 +137,15 @@ class MyWidget(QMainWindow):
                             self.used_buttons.append(self.my_buttons[i])
                             threading.Timer(0.3, self.del_from_color_list).start()
         else:
-            self.len_of_text -= 1
-            self.btn_backspace.setStyleSheet("background-color: rgb(115, 115, 115);")
-            threading.Timer(0.1, lambda: self.btn_backspace.setStyleSheet(self.main_style)).start()
-            for button in self.my_buttons_to_change_all_colors:
-                if button != self.btn_backspace:
-                    button.setStyleSheet(self.main_style)
-            self.used_buttons.clear()
+            if not practice_or_lesson:
+                self.len_of_text -= 1
+                self.btn_backspace.setStyleSheet("background-color: rgb(115, 115, 115);")
+                threading.Timer(0.1, lambda: self.btn_backspace.setStyleSheet(self.main_style)).start()
+                for button in self.my_buttons_to_change_all_colors:
+                    if button != self.btn_backspace:
+                        button.setStyleSheet(self.main_style)
+            else:
+                self.btn_backspace.setStyleSheet(self.main_style)
 
     def del_from_color_list(self):
         if bool(self.used_buttons):
@@ -169,6 +172,7 @@ class MyWidget(QMainWindow):
             file = open(text, encoding='utf-8')
             self.plainTextEdit_2.setPlainText(file.read())
             self.plainTextEdit.setPlainText('')
+            self.len_of_text = 0
             self.now_text = text
             file.close()
         else:
@@ -218,11 +222,13 @@ class MyWidget(QMainWindow):
                 self.plainTextEdit_2.setPlainText(
                     f'Ваша скорость печати: {speed} символ{end} в минуту.')
                 threading.Timer(1, lambda: self.plainTextEdit.setPlainText('')).start()
+                self.len_of_text = 0
         else:
             if self.plainTextEdit.toPlainText() == self.plainTextEdit_2.toPlainText():
                 time.sleep(0.1)
                 self.plainTextEdit_2.setPlainText('Вы прошли урок!')
                 threading.Timer(1, lambda: self.plainTextEdit.setPlainText('')).start()
+                self.len_of_text = 0
 
     def wrong_text(self):
         text = self.plainTextEdit.toPlainText()
@@ -235,7 +241,6 @@ class MyWidget(QMainWindow):
                 self.text_in_PTE_2 = text2
         else:
             self.plainTextEdit.setStyleSheet('color: rgb(232, 232, 232);')
-            self.btn_backspace.setStyleSheet(self.main_style)
 
 
 #############################################################################################################
