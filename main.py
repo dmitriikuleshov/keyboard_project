@@ -234,6 +234,7 @@ class MyWidget(QMainWindow):
                 self.text_in_PTE_2 = text2
         else:
             self.plainTextEdit.setStyleSheet('color: rgb(232, 232, 232);')
+            self.btn_backspace.setStyleSheet(self.main_style)
 
 
 #############################################################################################################
