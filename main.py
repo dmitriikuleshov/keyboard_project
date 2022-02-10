@@ -18,6 +18,25 @@ my_styles = ['background-color: rgb(255, 206, 108);', 'background-color: rgb(181
              'background-color: rgb(255, 163, 144);', 'background-color: rgb(184, 255, 222);',
              'background-color: rgb(255, 99, 101);']
 
+practice_texts = ['Practice/text_1.txt', 'Practice/text_2.txt', 'Practice/text_3.txt', 'Practice/text_4.txt',
+                  'Practice/text_5.txt', 'Practice/text_6.txt', 'Practice/text_7.txt', 'Practice/text_8.txt',
+                  'Practice/text_9.txt', 'Practice/text_10.txt', 'Practice/text_11.txt', 'Practice/text_12.txt',
+                  'Practice/text_13.txt', 'Practice/text_14.txt', 'Practice/text_15.txt', 'Practice/text_16.txt',
+                  'Practice/text_17.txt', 'Practice/text_18.txt', 'Practice/text_19.txt', 'Practice/text_20.txt',
+                  'Practice/text_21.txt', 'Practice/text_22.txt', 'Practice/text_23.txt', 'Practice/text_24.txt',
+                  'Practice/text_25.txt', 'Practice/text_26.txt', 'Practice/text_27.txt', 'Practice/text_28.txt',
+                  'Practice/text_29.txt', 'Practice/text_30.txt', 'Practice/text_31.txt', 'Practice/text_32.txt',
+                  'Practice/text_33.txt', 'Practice/text_34.txt', 'Practice/text_35.txt', 'Practice/text_36.txt',
+                  'Practice/text_37.txt', 'Practice/text_38.txt', 'Practice/text_39.txt', 'Practice/text_40.txt',
+                  'Practice/text_41.txt', 'Practice/text_42.txt', 'Practice/text_43.txt', 'Practice/text_44.txt',
+                  'Practice/text_45.txt', 'Practice/text_46.txt', 'Practice/text_47.txt', 'Practice/text_48.txt',
+                  'Practice/text_49.txt', 'Practice/text_50.txt', 'Practice/text_51.txt', 'Practice/text_52.txt',
+                  'Practice/text_53.txt', 'Practice/text_54.txt', 'Practice/text_55.txt', 'Practice/text_56.txt',
+                  'Practice/text_57.txt', 'Practice/text_58.txt', 'Practice/text_59.txt', 'Practice/text_60.txt',
+                  'Practice/text_61.txt', 'Practice/text_62.txt', 'Practice/text_63.txt', 'Practice/text_64.txt',
+                  'Practice/text_65.txt', 'Practice/text_66.txt', 'Practice/text_67.txt', 'Practice/text_68.txt',
+                  'Practice/text_69.txt', 'Practice/text_70.txt', 'Practice/text_71.txt']
+
 
 class MyWidget(QMainWindow):
     #########################################################################################################
@@ -91,7 +110,6 @@ class MyWidget(QMainWindow):
         #########################################################################################################
         #   ИЗМЕНЕНИЕ ТЕКСТА PRACTICE, LESSONS ##################################################################
         #########################################################################################################
-        self.practise_texts = ['Practice/text_1.txt', 'Practice/text_2.txt', 'Practice/text_3.txt']
         self.btn_Practice.clicked.connect(self.random_practice_text)
         self.btn_Practice.clicked.connect(lambda: self.clicked_button_changes_color(self.btn_Practice))
         self.btn_Lesson1.clicked.connect(lambda: self.clicked_button_changes_color(self.btn_Lesson1))
@@ -166,7 +184,7 @@ class MyWidget(QMainWindow):
             button.setStyleSheet(self.main_style)
 
     def random_practice_text(self):
-        text = random.choice(self.practise_texts)
+        text = random.choice(practice_texts)
         if text != self.now_text:
             time.sleep(0.1)
             file = open(text, encoding='utf-8')
