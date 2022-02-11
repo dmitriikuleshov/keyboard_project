@@ -58,6 +58,11 @@ main_body{
         <pointsize>16</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">
+color: rgb(232, 232, 232);
+selection-background-color: rgb(53, 51, 42);</string>
+      </property>
      </widget>
     </item>
     <item>
@@ -76,7 +81,7 @@ main_body{
       </property>
       <property name="styleSheet">
        <string notr="true">color: rgb(232, 232, 232);
-selection-background-color: rgb(116, 176, 255);
+selection-background-color: rgb(53, 51, 42);
 background-color: rgb(85, 85, 127);</string>
       </property>
      </widget>
@@ -242,7 +247,7 @@ border-radius: 10px;
                 <string notr="true">background-color: rgb(34, 34, 34);</string>
                </property>
                <property name="text">
-                <string>Practisce</string>
+                <string>Тренажер</string>
                </property>
                <property name="icon">
                 <iconset>
@@ -299,7 +304,7 @@ border-radius: 10px;
                 <string notr="true">background-color: rgb(34, 34, 34);</string>
                </property>
                <property name="text">
-                <string>Lesson 1</string>
+                <string>Урок 1</string>
                </property>
                <property name="icon">
                 <iconset>
@@ -356,7 +361,7 @@ border-radius: 10px;
                 <string notr="true">background-color: rgb(34, 34, 34);</string>
                </property>
                <property name="text">
-                <string>Lesson 2</string>
+                <string>Урок 2</string>
                </property>
                <property name="icon">
                 <iconset>
@@ -411,7 +416,7 @@ border-radius: 10px;
                 <string notr="true">background-color: rgb(34, 34, 34);</string>
                </property>
                <property name="text">
-                <string>Lesson 3</string>
+                <string>Урок 3</string>
                </property>
                <property name="icon">
                 <iconset>
@@ -466,7 +471,7 @@ border-radius: 10px;
                 <string notr="true">background-color: rgb(34, 34, 34);</string>
                </property>
                <property name="text">
-                <string>Lesson 4</string>
+                <string>Урок 4</string>
                </property>
                <property name="icon">
                 <iconset>
@@ -521,7 +526,7 @@ border-radius: 10px;
                 <string notr="true">background-color: rgb(34, 34, 34);</string>
                </property>
                <property name="text">
-                <string>Lesson 5</string>
+                <string>Урок 5</string>
                </property>
                <property name="icon">
                 <iconset>
@@ -576,7 +581,7 @@ border-radius: 10px;
                 <string notr="true">background-color: rgb(34, 34, 34);</string>
                </property>
                <property name="text">
-                <string>Lesson 6</string>
+                <string>Урок 6</string>
                </property>
                <property name="icon">
                 <iconset>
@@ -631,7 +636,7 @@ border-radius: 10px;
                 <string notr="true">background-color: rgb(34, 34, 34);</string>
                </property>
                <property name="text">
-                <string>Lesson 7</string>
+                <string>Урок 7</string>
                </property>
                <property name="icon">
                 <iconset>
@@ -686,7 +691,7 @@ border-radius: 10px;
                 <string notr="true">background-color: rgb(34, 34, 34);</string>
                </property>
                <property name="text">
-                <string>Lesson 8</string>
+                <string>Урок 8</string>
                </property>
                <property name="icon">
                 <iconset>
@@ -743,7 +748,7 @@ border-radius: 10px;
                 <string notr="true">background-color: rgb(34, 34, 34);</string>
                </property>
                <property name="text">
-                <string>Lesson 9</string>
+                <string>Урок 9</string>
                </property>
                <property name="icon">
                 <iconset>
@@ -798,7 +803,7 @@ border-radius: 10px;
                 <string notr="true">background-color: rgb(34, 34, 34);</string>
                </property>
                <property name="text">
-                <string>Lesson 10</string>
+                <string>Урок 10</string>
                </property>
                <property name="icon">
                 <iconset>
@@ -2230,7 +2235,7 @@ alternate-background-color: rgb(183, 248, 255);</string>
              <property name="font">
               <font>
                <family>Bahnschrift SemiBold</family>
-               <pointsize>14</pointsize>
+               <pointsize>12</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -2245,7 +2250,7 @@ alternate-background-color: rgb(183, 248, 255);</string>
               <string notr="true">background-color: rgb(255, 206, 108);</string>
              </property>
              <property name="text">
-              <string>Change color</string>
+              <string>Изменить стиль</string>
              </property>
             </widget>
             <widget class="QColumnView" name="columnView">
@@ -2283,7 +2288,7 @@ alternate-background-color: rgb(183, 248, 255);</string>
               <string notr="true">border-radius: 5px;</string>
              </property>
              <property name="text">
-              <string>Don`t show keyboard</string>
+              <string>Показать клавиатуру</string>
              </property>
              <property name="iconSize">
               <size>
