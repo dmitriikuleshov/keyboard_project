@@ -98,11 +98,9 @@ class MyWidget(QMainWindow):
         self.text_of_buttons = 'ё1234567890-=йцукенгшщзхъфывапролджэячсмитьбю. '
 
         self.btn_str3_11.clicked.connect(self.change_color)
-        self.btn_str3_11.clicked.connect(self.show_keyboard_color_changed)
         #########################################################################################################
         #   ЗАТЕМНЕНИЕ ТЕКСТА #####################################################################
         #########################################################################################################
-        self.used_buttons = []
         self.plainTextEdit.textChanged.connect(self.click_change_color)
         self.plainTextEdit.textChanged.connect(self.text_is_printed)
         self.plainTextEdit.textChanged.connect(self.wrong_text)
@@ -145,35 +143,28 @@ class MyWidget(QMainWindow):
         self.len_of_text = len(text_in_pte)
         if self.len_of_text > old_len:
             if text_in_pte[-1].isupper():
-                self.btn_Lshift.setStyleSheet("background-color: rgb(115, 115, 115);")
-                self.used_buttons.append(self.btn_Lshift)
-                threading.Timer(0.3, self.del_from_color_list).start()
+                self.turn_gray_and_return(self.btn_Lshift)
             text_in_pte_lower = text_in_pte.lower()
             if text_in_pte_lower[-1] in self.text_of_buttons:
                 for i in range(len(self.my_buttons)):
                     if self.my_buttons[i].text().lower() == text_in_pte_lower[-1]:
-                        self.my_buttons[i].setStyleSheet("background-color: rgb(115, 115, 115);")
-                        self.used_buttons.append(self.my_buttons[i])
-                        threading.Timer(0.3, self.del_from_color_list).start()
+                        self.turn_gray_and_return(self.my_buttons[i])
         else:
             if not practice_or_lesson:
-                self.btn_backspace.setStyleSheet("background-color: rgb(115, 115, 115);")
-                threading.Timer(0.1, lambda: self.btn_backspace.setStyleSheet(self.main_style)).start()
-                for button in self.my_buttons_to_change_all_colors:
-                    if button != self.btn_backspace:
-                        button.setStyleSheet(self.main_style)
+                self.turn_gray_and_return(self.btn_backspace)
             else:
                 self.btn_backspace.setStyleSheet(self.main_style)
 
-    def del_from_color_list(self):
-        if bool(self.used_buttons):
-            self.used_buttons[0].setStyleSheet(self.main_style)
-            del self.used_buttons[0]
-
+    def turn_gray_and_return(self, button):
+        button.setStyleSheet("background-color: rgb(115, 115, 115);")
+        threading.Timer(0.3, lambda: button.setStyleSheet(self.main_style)).start()
     #########################################################################################################
     # ИЗМЕНЯЕТ ЦВЕТ ВСЕЙ КЛАВИАТУРЫ ПРИ НАЖАТИИИ CHANGE COLOR ###############################################
     #########################################################################################################
+
     def change_color(self):
+        self.columnView.move(160, 330)
+        self.show_keyboard_checkBox.setChecked(False)
         time.sleep(0.1)
         style_number = my_styles.index(self.main_style)
         if style_number + 1 <= len(my_styles) - 1:
@@ -205,10 +196,6 @@ class MyWidget(QMainWindow):
             self.columnView.move(100, 40)
         else:
             self.columnView.move(160, 330)
-
-    def show_keyboard_color_changed(self):
-        self.columnView.move(160, 330)
-        self.show_keyboard_checkBox.setChecked(False)
 
     def create_timer(self):
         self.time = 0
