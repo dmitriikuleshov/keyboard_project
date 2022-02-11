@@ -156,7 +156,7 @@ class MyWidget(QMainWindow):
                             threading.Timer(0.3, self.del_from_color_list).start()
         else:
             if not practice_or_lesson:
-                self.len_of_text -= 1
+                self.len_of_text = len(self.plainTextEdit.toPlainText())
                 self.btn_backspace.setStyleSheet("background-color: rgb(115, 115, 115);")
                 threading.Timer(0.1, lambda: self.btn_backspace.setStyleSheet(self.main_style)).start()
                 for button in self.my_buttons_to_change_all_colors:
