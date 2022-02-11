@@ -75,6 +75,7 @@ class MyWidget(QMainWindow):
                            self.btn_str3_5, self.btn_str3_6, self.btn_str3_7,
                            self.btn_str3_8, self.btn_str3_9, self.btn_str3_10,
                            self.btn_space]
+        self.my_buttons_dict = {}
         self.my_buttons_to_change_all_colors = [self.btn_sth, self.btn_num_1, self.btn_num_2,
                                                 self.btn_num_4, self.btn_num_5, self.btn_num_6,
                                                 self.btn_num_7, self.btn_num_8, self.btn_num_9,
@@ -139,24 +140,23 @@ class MyWidget(QMainWindow):
     # __НЕ ИЗМЕНЯТЬ__ #######################################################################################
     #########################################################################################################
     def click_change_color(self, practice_or_lesson=False):
-        changed_len = len(self.plainTextEdit.toPlainText())
-        if changed_len > self.len_of_text:
-            self.len_of_text += 1
-            if len(self.plainTextEdit.toPlainText()):
-                if self.plainTextEdit.toPlainText()[-1].isupper():
-                    self.btn_Lshift.setStyleSheet("background-color: rgb(115, 115, 115);")
-                    self.used_buttons.append(self.btn_Lshift)
-                    threading.Timer(0.3, self.del_from_color_list).start()
-                text = self.plainTextEdit.toPlainText().lower()
-                if text[-1] in self.text_of_buttons:
-                    for i in range(len(self.my_buttons)):
-                        if self.my_buttons[i].text().lower() == (text[-1]).lower():
-                            self.my_buttons[i].setStyleSheet("background-color: rgb(115, 115, 115);")
-                            self.used_buttons.append(self.my_buttons[i])
-                            threading.Timer(0.3, self.del_from_color_list).start()
+        text_in_pte = self.plainTextEdit.toPlainText()
+        old_len = self.len_of_text
+        self.len_of_text = len(text_in_pte)
+        if self.len_of_text > old_len:
+            if text_in_pte[-1].isupper():
+                self.btn_Lshift.setStyleSheet("background-color: rgb(115, 115, 115);")
+                self.used_buttons.append(self.btn_Lshift)
+                threading.Timer(0.3, self.del_from_color_list).start()
+            text_in_pte_lower = text_in_pte.lower()
+            if text_in_pte_lower[-1] in self.text_of_buttons:
+                for i in range(len(self.my_buttons)):
+                    if self.my_buttons[i].text().lower() == text_in_pte_lower[-1]:
+                        self.my_buttons[i].setStyleSheet("background-color: rgb(115, 115, 115);")
+                        self.used_buttons.append(self.my_buttons[i])
+                        threading.Timer(0.3, self.del_from_color_list).start()
         else:
             if not practice_or_lesson:
-                self.len_of_text = len(self.plainTextEdit.toPlainText())
                 self.btn_backspace.setStyleSheet("background-color: rgb(115, 115, 115);")
                 threading.Timer(0.1, lambda: self.btn_backspace.setStyleSheet(self.main_style)).start()
                 for button in self.my_buttons_to_change_all_colors:
