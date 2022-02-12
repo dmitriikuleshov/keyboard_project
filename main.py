@@ -14,8 +14,8 @@ from PyQt5 import uic
 import sys
 import time
 
-my_styles = ['background-color: rgb(255, 206, 108);', 'background-color: rgb(181, 189, 255);',
-             'background-color: rgb(255, 163, 144);', 'background-color: rgb(184, 255, 222);',
+my_styles = ['background-color: rgb(255, 163, 144);', 'background-color: rgb(255, 206, 108);',
+             'background-color: rgb(181, 189, 255);', 'background-color: rgb(184, 255, 222);',
              'background-color: rgb(255, 99, 101);']
 
 practice_texts = ['Practice/text_1.txt', 'Practice/text_2.txt', 'Practice/text_3.txt', 'Practice/text_4.txt',
@@ -37,6 +37,26 @@ practice_texts = ['Practice/text_1.txt', 'Practice/text_2.txt', 'Practice/text_3
                   'Practice/text_65.txt', 'Practice/text_66.txt', 'Practice/text_67.txt', 'Practice/text_68.txt',
                   'Practice/text_69.txt', 'Practice/text_70.txt', 'Practice/text_71.txt']
 
+practice_texts_eng = ['Practice_eng/text_1.txt', 'Practice_eng/text_2.txt', 'Practice_eng/text_3.txt',
+                      'Practice_eng/text_4.txt', 'Practice_eng/text_5.txt', 'Practice_eng/text_6.txt',
+                      'Practice_eng/text_7.txt', 'Practice_eng/text_8.txt', 'Practice_eng/text_9.txt',
+                      'Practice_eng/text_10.txt', 'Practice_eng/text_11.txt', 'Practice_eng/text_12.txt',
+                      'Practice_eng/text_13.txt', 'Practice_eng/text_14.txt', 'Practice_eng/text_15.txt',
+                      'Practice_eng/text_16.txt', 'Practice_eng/text_17.txt', 'Practice_eng/text_18.txt',
+                      'Practice_eng/text_19.txt', 'Practice_eng/text_20.txt', 'Practice_eng/text_21.txt',
+                      'Practice_eng/text_22.txt', 'Practice_eng/text_23.txt', 'Practice_eng/text_24.txt',
+                      'Practice_eng/text_25.txt', 'Practice_eng/text_26.txt', 'Practice_eng/text_27.txt',
+                      'Practice_eng/text_28.txt', 'Practice_eng/text_29.txt', 'Practice_eng/text_30.txt',
+                      'Practice_eng/text_31.txt', 'Practice_eng/text_32.txt', 'Practice_eng/text_33.txt',
+                      'Practice_eng/text_34.txt', 'Practice_eng/text_35.txt', 'Practice_eng/text_36.txt',
+                      'Practice_eng/text_37.txt', 'Practice_eng/text_38.txt', 'Practice_eng/text_39.txt',
+                      'Practice_eng/text_40.txt', 'Practice_eng/text_41.txt', 'Practice_eng/text_42.txt',
+                      'Practice_eng/text_43.txt', 'Practice_eng/text_44.txt', 'Practice_eng/text_45.txt',
+                      'Practice_eng/text_46.txt', 'Practice_eng/text_47.txt', 'Practice_eng/text_48.txt',
+                      'Practice_eng/text_49.txt', 'Practice_eng/text_50.txt', 'Practice_eng/text_51.txt',
+                      'Practice_eng/text_52.txt', 'Practice_eng/text_53.txt', 'Practice_eng/text_54.txt',
+                      'Practice_eng/text_55.txt']
+
 
 class MyWidget(QMainWindow):
     #########################################################################################################
@@ -52,13 +72,23 @@ class MyWidget(QMainWindow):
         # ДЕФОЛТНЫЙ ТЕКСТ
         self.plainTextEdit_2.setPlainText('Привет, я помогу тебе научиться печатать вслепую!')
         # РЕЖИМЫ: УРОК И ПРАКТИКА
-        self.it_is_Practice = False
-        self.btn_Practice.clicked.connect(self.change_mods)
+        self.mode = 'NONE'
+        self.btn_Practice.clicked.connect(lambda: self.change_mods('Practice'))
+        self.btn_Lesson1.clicked.connect(lambda: self.change_mods('Lesson'))
+        self.btn_Lesson2.clicked.connect(lambda: self.change_mods('Lesson'))
+        self.btn_Lesson3.clicked.connect(lambda: self.change_mods('Lesson'))
+        self.btn_Lesson4.clicked.connect(lambda: self.change_mods('Lesson'))
+        self.btn_Lesson5.clicked.connect(lambda: self.change_mods('Lesson'))
+        self.btn_Lesson6.clicked.connect(lambda: self.change_mods('Lesson'))
+        self.btn_Lesson7.clicked.connect(lambda: self.change_mods('Lesson'))
+        self.btn_Lesson8.clicked.connect(lambda: self.change_mods('Lesson'))
+        self.btn_Lesson9.clicked.connect(lambda: self.change_mods('Lesson'))
+        self.btn_Lesson10.clicked.connect(lambda: self.change_mods('Lesson'))
 
         #########################################################################################################
         # ИЗМЕНЕНИЕ СТИЛЯ КЛАВИАТУРЫ ############################################################################
         #########################################################################################################
-        self.main_style = 'background-color: rgb(255, 206, 108);'
+        self.main_style = 'background-color: rgb(255, 163, 144);'
         self.my_buttons = [self.btn_sth, self.btn_num_1, self.btn_num_2, self.btn_num_3, self.btn_num_4,
                            self.btn_num_5, self.btn_num_6, self.btn_num_7, self.btn_num_8, self.btn_num_9,
                            self.btn_num_0, self.btn_minus, self.btn_ravno, self.btn_str_1, self.btn_str_2,
@@ -93,7 +123,6 @@ class MyWidget(QMainWindow):
                                'z': self.btn_str3_1, 'x': self.btn_str3_2, 'c': self.btn_str3_3, 'v': self.btn_str3_4,
                                'b': self.btn_str3_5, 'n': self.btn_str3_6, 'm': self.btn_str3_7, ',': self.btn_str3_8,
                                '.': self.btn_str3_9, '/': self.btn_str3_10, ' ': self.btn_space}
-        self.text_of_buttons = 'ё1234567890-=йцукенгшщзхъфывапролджэячсмитьбю. '
         self.all_buttons = [self.btn_sth, self.btn_num_1, self.btn_num_2, self.btn_num_4, self.btn_num_5,
                             self.btn_num_6, self.btn_num_7, self.btn_num_8, self.btn_num_9, self.btn_num_0,
                             self.btn_minus, self.btn_ravno, self.btn_str_1, self.btn_str_2, self.btn_str_3,
@@ -106,7 +135,8 @@ class MyWidget(QMainWindow):
                             self.btn_str3_5, self.btn_str3_6, self.btn_str3_7, self.btn_str3_8, self.btn_str3_9,
                             self.btn_str3_10, self.btn_space, self.btn_str3_11, self.btn_num_3, self.btn_backspace,
                             self.btn_change_lang]
-
+        for elem in self.all_buttons:
+            elem.setStyleSheet(self.main_style)
         self.btn_str3_11.clicked.connect(self.change_color)
         #########################################################################################################
         #   ЗАТЕМНЕНИЕ ТЕКСТА #####################################################################
@@ -148,7 +178,7 @@ class MyWidget(QMainWindow):
         self.now_lang = 'rus'
 
     #########################################################################################################
-    # __НЕ ИЗМЕНЯТЬ__ #######################################################################################
+    # FUNCTIONS #######################################################################################
     #########################################################################################################
     def change_lang(self):
         if self.now_lang == 'rus':
@@ -174,6 +204,10 @@ class MyWidget(QMainWindow):
                 for letter in self.my_buttons_rus:
                     if letter == text_in_pte_lower[-1]:
                         self.turn_gray_and_return(self.my_buttons_rus[letter])
+            else:
+                for letter in self.my_buttons_eng:
+                    if letter == text_in_pte_lower[-1]:
+                        self.turn_gray_and_return(self.my_buttons_eng[letter])
         else:
             if not practice_or_lesson:
                 self.turn_gray_and_return(self.btn_backspace)
@@ -201,13 +235,15 @@ class MyWidget(QMainWindow):
             button.setStyleSheet(self.main_style)
 
     def random_practice_text(self):
-        text = random.choice(practice_texts)
+        if self.now_lang == 'rus':
+            text = random.choice(practice_texts)
+        else:
+            text = random.choice(practice_texts_eng)
         if text != self.now_text:
             time.sleep(0.1)
             file = open(text, encoding='utf-8')
             self.plainTextEdit_2.setPlainText(file.read())
             self.plainTextEdit.setPlainText('')
-            self.len_of_text = 0
             self.now_text = text
             file.close()
         else:
@@ -237,11 +273,14 @@ class MyWidget(QMainWindow):
         self.time = int_
         self.timeViewer.display(self.time)
 
-    def change_mods(self):
-        self.it_is_Practice = True
+    def change_mods(self, mode):
+        if mode == 'Practice':
+            self.mode = 'Practice'
+        elif mode == 'Lesson':
+            self.mode = 'Lesson'
 
     def text_is_printed(self):
-        if self.it_is_Practice:
+        if self.mode == 'Practice':
             if self.plainTextEdit.toPlainText() == self.plainTextEdit_2.toPlainText():
                 time.sleep(0.1)
                 speed = round((len(self.plainTextEdit_2.toPlainText()) / self.time) * 60, 0)
@@ -255,13 +294,15 @@ class MyWidget(QMainWindow):
                 threading.Timer(1, lambda: self.plainTextEdit.setPlainText('')).start()
                 self.timer.stop()
                 self.time = 0
-                self.len_of_text = 0
-        else:
+        elif self.mode == 'Lesson':
             if self.plainTextEdit.toPlainText() == self.plainTextEdit_2.toPlainText():
                 time.sleep(0.1)
                 self.plainTextEdit_2.setPlainText('Вы прошли урок!')
                 threading.Timer(1, lambda: self.plainTextEdit.setPlainText('')).start()
-                self.len_of_text = 0
+        elif self.mode == 'NONE':
+            if self.plainTextEdit.toPlainText() == self.plainTextEdit_2.toPlainText():
+                self.plainTextEdit_2.setPlainText('Так держать!')
+                threading.Timer(1, lambda: self.plainTextEdit.setPlainText('')).start()
 
     def wrong_text(self):
         text = self.plainTextEdit.toPlainText()
