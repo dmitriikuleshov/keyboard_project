@@ -59,43 +59,53 @@ class MyWidget(QMainWindow):
         # ИЗМЕНЕНИЕ СТИЛЯ КЛАВИАТУРЫ ############################################################################
         #########################################################################################################
         self.main_style = 'background-color: rgb(255, 206, 108);'
-        self.my_buttons = [self.btn_sth, self.btn_num_1, self.btn_num_2, self.btn_num_3,
-                           self.btn_num_4, self.btn_num_5, self.btn_num_6,
-                           self.btn_num_7, self.btn_num_8, self.btn_num_9,
-                           self.btn_num_0, self.btn_minus, self.btn_ravno,
-                           self.btn_str_1, self.btn_str_2, self.btn_str_3,
-                           self.btn_str_4, self.btn_str_5, self.btn_str_6,
-                           self.btn_str_7, self.btn_str_8, self.btn_str_9,
-                           self.btn_str_10, self.btn_str_11, self.btn_str_12,
-                           self.btn_str2_1, self.btn_str2_2, self.btn_str2_3,
-                           self.btn_str2_4, self.btn_str2_5, self.btn_str2_6,
-                           self.btn_str2_7, self.btn_str2_8, self.btn_str2_9,
-                           self.btn_str2_10, self.btn_str2_11, self.btn_str3_1,
-                           self.btn_str3_2, self.btn_str3_3, self.btn_str3_4,
-                           self.btn_str3_5, self.btn_str3_6, self.btn_str3_7,
-                           self.btn_str3_8, self.btn_str3_9, self.btn_str3_10,
-                           self.btn_space]
-        self.my_buttons_dict = {}
-        self.my_buttons_to_change_all_colors = [self.btn_sth, self.btn_num_1, self.btn_num_2,
-                                                self.btn_num_4, self.btn_num_5, self.btn_num_6,
-                                                self.btn_num_7, self.btn_num_8, self.btn_num_9,
-                                                self.btn_num_0, self.btn_minus, self.btn_ravno,
-                                                self.btn_str_1, self.btn_str_2, self.btn_str_3,
-                                                self.btn_str_4, self.btn_str_5, self.btn_str_6,
-                                                self.btn_str_7, self.btn_str_8, self.btn_str_9,
-                                                self.btn_str_10, self.btn_str_11, self.btn_tab,
-                                                self.btn_str_12, self.btn_Rshift, self.btn_Lshift,
-                                                self.btn_str2_1, self.btn_str2_2, self.btn_caps,
-                                                self.btn_str2_3, self.btn_str2_4, self.btn_str2_5,
-                                                self.btn_str2_6, self.btn_str2_7, self.btn_str2_8,
-                                                self.btn_str2_9, self.btn_str2_10, self.btn_str2_11,
-                                                self.btn_str3_1, self.btn_enter, self.btn_str_13,
-                                                self.btn_str3_2, self.btn_str3_3, self.btn_str3_4,
-                                                self.btn_str3_5, self.btn_str3_6, self.btn_str3_7,
-                                                self.btn_str3_8, self.btn_str3_9, self.btn_str3_10,
-                                                self.btn_space, self.btn_str3_11, self.btn_num_3,
-                                                self.btn_backspace]
+        self.my_buttons = [self.btn_sth, self.btn_num_1, self.btn_num_2, self.btn_num_3, self.btn_num_4,
+                           self.btn_num_5, self.btn_num_6, self.btn_num_7, self.btn_num_8, self.btn_num_9,
+                           self.btn_num_0, self.btn_minus, self.btn_ravno, self.btn_str_1, self.btn_str_2,
+                           self.btn_str_3, self.btn_str_4, self.btn_str_5, self.btn_str_6, self.btn_str_7,
+                           self.btn_str_8, self.btn_str_9, self.btn_str_10, self.btn_str_11, self.btn_str_12,
+                           self.btn_str2_1, self.btn_str2_2, self.btn_str2_3, self.btn_str2_4, self.btn_str2_5,
+                           self.btn_str2_6, self.btn_str2_7, self.btn_str2_8, self.btn_str2_9, self.btn_str2_10,
+                           self.btn_str2_11, self.btn_str3_1, self.btn_str3_2, self.btn_str3_3, self.btn_str3_4,
+                           self.btn_str3_5, self.btn_str3_6, self.btn_str3_7, self.btn_str3_8, self.btn_str3_9,
+                           self.btn_str3_10, self.btn_space]
+        self.my_buttons_rus = {'ё': self.btn_sth, '1': self.btn_num_1, '2': self.btn_num_2, '3': self.btn_num_3,
+                               '4': self.btn_num_4, '5': self.btn_num_5, '6': self.btn_num_6, '7': self.btn_num_7,
+                               '8': self.btn_num_8, '9': self.btn_num_9, '0': self.btn_num_0, '-': self.btn_minus,
+                               '=': self.btn_ravno, 'й': self.btn_str_1, 'ц': self.btn_str_2, 'у': self.btn_str_3,
+                               'к': self.btn_str_4, 'е': self.btn_str_5, 'н': self.btn_str_6, 'г': self.btn_str_7,
+                               'ш': self.btn_str_8, 'щ': self.btn_str_9, 'з': self.btn_str_10, 'х': self.btn_str_11,
+                               'ъ': self.btn_str_12, 'ф': self.btn_str2_1, 'ы': self.btn_str2_2, 'в': self.btn_str2_3,
+                               'а': self.btn_str2_4, 'п': self.btn_str2_5, 'р': self.btn_str2_6, 'о': self.btn_str2_7,
+                               'л': self.btn_str2_8, 'д': self.btn_str2_9, 'ж': self.btn_str2_10, 'э': self.btn_str2_11,
+                               'я': self.btn_str3_1, 'ч': self.btn_str3_2, 'с': self.btn_str3_3, 'м': self.btn_str3_4,
+                               'и': self.btn_str3_5, 'т': self.btn_str3_6, 'ь': self.btn_str3_7, 'б': self.btn_str3_8,
+                               'ю': self.btn_str3_9, '.': self.btn_str3_10, ' ': self.btn_space}
+        self.my_buttons_eng = {'`': self.btn_sth, '1': self.btn_num_1, '2': self.btn_num_2, '3': self.btn_num_3,
+                               '4': self.btn_num_4, '5': self.btn_num_5, '6': self.btn_num_6, '7': self.btn_num_7,
+                               '8': self.btn_num_8, '9': self.btn_num_9, '0': self.btn_num_0, '-': self.btn_minus,
+                               '=': self.btn_ravno, 'q': self.btn_str_1, 'w': self.btn_str_2, 'e': self.btn_str_3,
+                               'r': self.btn_str_4, 't': self.btn_str_5, 'y': self.btn_str_6, 'u': self.btn_str_7,
+                               'i': self.btn_str_8, 'o': self.btn_str_9, 'p': self.btn_str_10, '[': self.btn_str_11,
+                               ']': self.btn_str_12, 'a': self.btn_str2_1, 's': self.btn_str2_2, 'd': self.btn_str2_3,
+                               'f': self.btn_str2_4, 'g': self.btn_str2_5, 'h': self.btn_str2_6, 'j': self.btn_str2_7,
+                               'k': self.btn_str2_8, 'l': self.btn_str2_9, ';': self.btn_str2_10, '"': self.btn_str2_11,
+                               'z': self.btn_str3_1, 'x': self.btn_str3_2, 'c': self.btn_str3_3, 'v': self.btn_str3_4,
+                               'b': self.btn_str3_5, 'n': self.btn_str3_6, 'm': self.btn_str3_7, ',': self.btn_str3_8,
+                               '.': self.btn_str3_9, '/': self.btn_str3_10, ' ': self.btn_space}
         self.text_of_buttons = 'ё1234567890-=йцукенгшщзхъфывапролджэячсмитьбю. '
+        self.all_buttons = [self.btn_sth, self.btn_num_1, self.btn_num_2, self.btn_num_4, self.btn_num_5,
+                            self.btn_num_6, self.btn_num_7, self.btn_num_8, self.btn_num_9, self.btn_num_0,
+                            self.btn_minus, self.btn_ravno, self.btn_str_1, self.btn_str_2, self.btn_str_3,
+                            self.btn_str_4, self.btn_str_5, self.btn_str_6, self.btn_str_7, self.btn_str_8,
+                            self.btn_str_9, self.btn_str_10, self.btn_str_11, self.btn_tab, self.btn_str_12,
+                            self.btn_Rshift, self.btn_Lshift, self.btn_str2_1, self.btn_str2_2, self.btn_caps,
+                            self.btn_str2_3, self.btn_str2_4, self.btn_str2_5, self.btn_str2_6, self.btn_str2_7,
+                            self.btn_str2_8, self.btn_str2_9, self.btn_str2_10, self.btn_str2_11, self.btn_str3_1,
+                            self.btn_enter, self.btn_str_13, self.btn_str3_2, self.btn_str3_3, self.btn_str3_4,
+                            self.btn_str3_5, self.btn_str3_6, self.btn_str3_7, self.btn_str3_8, self.btn_str3_9,
+                            self.btn_str3_10, self.btn_space, self.btn_str3_11, self.btn_num_3, self.btn_backspace,
+                            self.btn_change_lang]
 
         self.btn_str3_11.clicked.connect(self.change_color)
         #########################################################################################################
@@ -133,10 +143,25 @@ class MyWidget(QMainWindow):
         self.timeInterval = 1000
         ########################################################################################################
         self.btn_Practice.clicked.connect(lambda: self.click_change_color(practice_or_lesson=True))
+        ########################################################################################################
+        self.btn_change_lang.clicked.connect(self.change_lang)
+        self.now_lang = 'rus'
 
     #########################################################################################################
     # __НЕ ИЗМЕНЯТЬ__ #######################################################################################
     #########################################################################################################
+    def change_lang(self):
+        if self.now_lang == 'rus':
+            for letter in self.my_buttons_eng:
+                self.my_buttons_eng[letter].setText(letter.upper())
+            self.now_lang = 'eng'
+            self.btn_change_lang.setText('Рус. раскалдка')
+        elif self.now_lang == 'eng':
+            for letter in self.my_buttons_rus:
+                self.my_buttons_rus[letter].setText(letter.upper())
+            self.now_lang = 'rus'
+            self.btn_change_lang.setText('Англ. раскалдка')
+
     def click_change_color(self, practice_or_lesson=False):
         text_in_pte = self.plainTextEdit.toPlainText()
         old_len = self.len_of_text
@@ -145,10 +170,10 @@ class MyWidget(QMainWindow):
             if text_in_pte[-1].isupper():
                 self.turn_gray_and_return(self.btn_Lshift)
             text_in_pte_lower = text_in_pte.lower()
-            if text_in_pte_lower[-1] in self.text_of_buttons:
-                for i in range(len(self.my_buttons)):
-                    if self.my_buttons[i].text().lower() == text_in_pte_lower[-1]:
-                        self.turn_gray_and_return(self.my_buttons[i])
+            if self.now_lang == 'rus':
+                for letter in self.my_buttons_rus:
+                    if letter == text_in_pte_lower[-1]:
+                        self.turn_gray_and_return(self.my_buttons_rus[letter])
         else:
             if not practice_or_lesson:
                 self.turn_gray_and_return(self.btn_backspace)
@@ -158,6 +183,7 @@ class MyWidget(QMainWindow):
     def turn_gray_and_return(self, button):
         button.setStyleSheet("background-color: rgb(115, 115, 115);")
         threading.Timer(0.3, lambda: button.setStyleSheet(self.main_style)).start()
+
     #########################################################################################################
     # ИЗМЕНЯЕТ ЦВЕТ ВСЕЙ КЛАВИАТУРЫ ПРИ НАЖАТИИИ CHANGE COLOR ###############################################
     #########################################################################################################
@@ -171,7 +197,7 @@ class MyWidget(QMainWindow):
             self.main_style = my_styles[style_number + 1]
         else:
             self.main_style = my_styles[0]
-        for button in self.my_buttons_to_change_all_colors:
+        for button in self.all_buttons:
             button.setStyleSheet(self.main_style)
 
     def random_practice_text(self):

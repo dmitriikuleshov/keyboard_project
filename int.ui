@@ -2223,19 +2223,19 @@ alternate-background-color: rgb(183, 248, 255);</string>
               <string/>
              </property>
             </widget>
-            <widget class="QPushButton" name="btn_str3_11">
+            <widget class="QPushButton" name="btn_change_lang">
              <property name="geometry">
               <rect>
                <x>10</x>
-               <y>380</y>
-               <width>121</width>
+               <y>340</y>
+               <width>111</width>
                <height>61</height>
               </rect>
              </property>
              <property name="font">
               <font>
                <family>Bahnschrift SemiBold</family>
-               <pointsize>12</pointsize>
+               <pointsize>10</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -2250,7 +2250,7 @@ alternate-background-color: rgb(183, 248, 255);</string>
               <string notr="true">background-color: rgb(255, 206, 108);</string>
              </property>
              <property name="text">
-              <string>Изменить стиль</string>
+              <string>Англ. раскладка</string>
              </property>
             </widget>
             <widget class="QColumnView" name="columnView">
@@ -2267,7 +2267,7 @@ alternate-background-color: rgb(183, 248, 255);</string>
              <property name="geometry">
               <rect>
                <x>10</x>
-               <y>350</y>
+               <y>310</y>
                <width>150</width>
                <height>15</height>
               </rect>
@@ -2331,6 +2331,36 @@ alternate-background-color: rgb(183, 248, 255);</string>
              </property>
              <property name="frameShape">
               <enum>QFrame::Box</enum>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="btn_str3_11">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>410</y>
+               <width>121</width>
+               <height>61</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <family>Bahnschrift SemiBold</family>
+               <pointsize>10</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>OpenHandCursor</cursorShape>
+             </property>
+             <property name="contextMenuPolicy">
+              <enum>Qt::DefaultContextMenu</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(255, 206, 108);</string>
+             </property>
+             <property name="text">
+              <string>Изменить стиль</string>
              </property>
             </widget>
            </widget>
