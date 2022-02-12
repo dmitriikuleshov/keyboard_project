@@ -59,9 +59,6 @@ practice_texts_eng = ['Practice_eng/text_1.txt', 'Practice_eng/text_2.txt', 'Pra
 
 
 class MyWidget(QMainWindow):
-    #########################################################################################################
-    #   БАЗА   ##############################################################################################
-    #########################################################################################################
     def __init__(self):
         super().__init__()
         uic.loadUi('int.ui', self)
@@ -84,9 +81,6 @@ class MyWidget(QMainWindow):
         self.btn_Lesson8.clicked.connect(lambda: self.change_mods('Lesson'))
         self.btn_Lesson9.clicked.connect(lambda: self.change_mods('Lesson'))
         self.btn_Lesson10.clicked.connect(lambda: self.change_mods('Lesson'))
-
-        #########################################################################################################
-        # ИЗМЕНЕНИЕ СТИЛЯ КЛАВИАТУРЫ ############################################################################
         #########################################################################################################
         self.main_style = 'background-color: rgb(255, 163, 144);'
         self.my_buttons = [self.btn_sth, self.btn_num_1, self.btn_num_2, self.btn_num_3, self.btn_num_4,
@@ -139,15 +133,11 @@ class MyWidget(QMainWindow):
             elem.setStyleSheet(self.main_style)
         self.btn_str3_11.clicked.connect(self.change_color)
         #########################################################################################################
-        #   ЗАТЕМНЕНИЕ ТЕКСТА #####################################################################
-        #########################################################################################################
         self.plainTextEdit.textChanged.connect(self.click_change_color)
         self.plainTextEdit.textChanged.connect(self.text_is_printed)
         self.plainTextEdit.textChanged.connect(self.wrong_text)
         self.len_of_text = 0
         self.text_in_PTE_2 = self.plainTextEdit_2.toPlainText()
-        #########################################################################################################
-        #   ИЗМЕНЕНИЕ ТЕКСТА PRACTICE, LESSONS ##################################################################
         #########################################################################################################
         self.btn_Practice.clicked.connect(self.random_practice_text)
         self.btn_Practice.clicked.connect(lambda: self.clicked_button_changes_color(self.btn_Practice))
@@ -164,7 +154,7 @@ class MyWidget(QMainWindow):
         self.now_text = ''
 
         #########################################################################################################
-        # ТАЙМЕР #######################################################################################
+        # ТАЙМЕР ################################################################################################
         #########################################################################################################
         self.btn_Practice.clicked.connect(self.create_timer)
         self.timer = QtCore.QTimer(self)
@@ -178,7 +168,7 @@ class MyWidget(QMainWindow):
         self.now_lang = 'rus'
 
     #########################################################################################################
-    # FUNCTIONS #######################################################################################
+    # FUNCTIONS #############################################################################################
     #########################################################################################################
     def change_lang(self):
         if self.now_lang == 'rus':
