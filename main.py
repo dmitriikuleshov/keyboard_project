@@ -164,7 +164,7 @@ class MyWidget(QMainWindow):
         self.now_text = ''
 
         #########################################################################################################
-        # ТАЙМЕР ПРАКТИКА #######################################################################################
+        # ТАЙМЕР #######################################################################################
         #########################################################################################################
         self.btn_Practice.clicked.connect(self.create_timer)
         self.timer = QtCore.QTimer(self)
@@ -217,10 +217,6 @@ class MyWidget(QMainWindow):
     def turn_gray_and_return(self, button):
         button.setStyleSheet("background-color: rgb(115, 115, 115);")
         threading.Timer(0.3, lambda: button.setStyleSheet(self.main_style)).start()
-
-    #########################################################################################################
-    # ИЗМЕНЯЕТ ЦВЕТ ВСЕЙ КЛАВИАТУРЫ ПРИ НАЖАТИИИ CHANGE COLOR ###############################################
-    #########################################################################################################
 
     def change_color(self):
         self.columnView.move(160, 330)
@@ -280,8 +276,8 @@ class MyWidget(QMainWindow):
             self.mode = 'Lesson'
 
     def text_is_printed(self):
-        if self.mode == 'Practice':
-            if self.plainTextEdit.toPlainText() == self.plainTextEdit_2.toPlainText():
+        if self.plainTextEdit.toPlainText() == self.plainTextEdit_2.toPlainText():
+            if self.mode == 'Practice':
                 time.sleep(0.1)
                 speed = round((len(self.plainTextEdit_2.toPlainText()) / self.time) * 60, 0)
                 end = ''
@@ -291,18 +287,20 @@ class MyWidget(QMainWindow):
                     end = 'a'
                 self.plainTextEdit_2.setPlainText(
                     f'Ваша скорость печати: {speed} символ{end} в минуту.')
-                threading.Timer(1, lambda: self.plainTextEdit.setPlainText('')).start()
+                self.set_no_text()
                 self.timer.stop()
                 self.time = 0
-        elif self.mode == 'Lesson':
-            if self.plainTextEdit.toPlainText() == self.plainTextEdit_2.toPlainText():
+            elif self.mode == 'Lesson':
                 time.sleep(0.1)
                 self.plainTextEdit_2.setPlainText('Вы прошли урок!')
-                threading.Timer(1, lambda: self.plainTextEdit.setPlainText('')).start()
-        elif self.mode == 'NONE':
-            if self.plainTextEdit.toPlainText() == self.plainTextEdit_2.toPlainText():
+                self.set_no_text()
+            elif self.mode == 'NONE':
                 self.plainTextEdit_2.setPlainText('Так держать!')
-                threading.Timer(1, lambda: self.plainTextEdit.setPlainText('')).start()
+                self.set_no_text()
+
+    def set_no_text(self):
+        threading.Thread(self.plainTextEdit.setPlainText('')).start()
+        threading.Thread(self.click_change_color(practice_or_lesson=True)).start()
 
     def wrong_text(self):
         text = self.plainTextEdit.toPlainText()

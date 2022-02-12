@@ -55,7 +55,7 @@ main_body{
       <property name="font">
        <font>
         <family>Roboto Medium</family>
-        <pointsize>16</pointsize>
+        <pointsize>17</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -76,7 +76,7 @@ selection-background-color: rgb(53, 51, 42);</string>
       <property name="font">
        <font>
         <family>Roboto Medium</family>
-        <pointsize>16</pointsize>
+        <pointsize>17</pointsize>
        </font>
       </property>
       <property name="styleSheet">
