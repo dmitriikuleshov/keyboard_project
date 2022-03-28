@@ -1,0 +1,2 @@
+Certain shorthand date formats use / as a delimiter, for example "6/21/1788" June 21, 1788.
+For example, 12~15 means "12 to 15", ~3 means "up to three" and 100~ means "100 and greater."
