@@ -13,9 +13,8 @@ from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtGui import QIcon
 import sys
 import time
-from pymorphy2 import MorphAnalyzer
 
-word = MorphAnalyzer().parse('символ')[0]
+
 practice_texts = [f'Practice/text_{i}.txt' for i in range(1, 72)]
 practice_texts_eng = [f'Practice_eng/text_{i}.txt' for i in range(1, 55)]
 my_styles = ['background-color: rgb(255, 163, 144);', 'background-color: rgb(255, 206, 108);',
@@ -404,8 +403,14 @@ class MyWidget(QMainWindow):
             time.sleep(0.1)
             if self.mode == 'Practice':
                 speed = round((len(self.text_in_PTE_2) / self.time) * 60, 0)
+                end = ''
+                if speed % 100 in (11, 12, 13, 14) or speed % 10 in (5, 6, 7, 8, 9, 0):
+                    end = 'ов'
+                elif speed % 10 in (2, 3, 4):
+                    end = 'a'
                 self.plainTextEdit_2.setPlainText(
-                    f'Ваша скорость печати: {speed} {word.make_agree_with_number(speed).word} в минуту.')
+                    f'Ваша скорость печати: {speed} символ{end} в минуту.')
+                self.mode = 'NONE'
                 self.timer.stop()
                 self.time = 0
             elif self.mode == 'Lesson':
