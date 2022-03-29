@@ -66,6 +66,7 @@ QPushButton{
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
+	selection-background-color: rgb(255, 3, 7);
 	padding: 10 px;
 	background-color: #ffc595;
 	border-radius: 5px;
