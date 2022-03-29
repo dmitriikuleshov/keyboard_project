@@ -10,6 +10,7 @@ from random import choice
 import threading
 from PyQt5 import QtCore, QtWidgets, uic
 from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtGui import QIcon
 import sys
 import time
 from pymorphy2 import MorphAnalyzer
@@ -28,6 +29,7 @@ my_styles = ['background-color: rgb(255, 163, 144);', 'background-color: rgb(255
 class LessonWidget(QMainWindow):
     def __init__(self, obj, num, style, lang):
         super().__init__()
+        self.setWindowIcon(QIcon('open-book.ico'))
         self.obj = obj
         self.lesson_number = num
         self.now_lang = lang
@@ -180,6 +182,8 @@ class MyWidget(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('int.ui', self)
+        self.setWindowTitle('TypeWriter')
+        self.setWindowIcon(QIcon('keyboard_icon.ico'))
         # ПОЛЕ ДЛЯ ЧТЕНИЯ ТЕКСТА
         self.plainTextEdit_2.setReadOnly(True)
         # ЧЕКБОКС КЛАВИАТУРЫ
