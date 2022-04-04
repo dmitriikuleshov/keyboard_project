@@ -14,7 +14,6 @@ from PyQt5.QtGui import QIcon
 import sys
 import time
 
-
 practice_texts = [f'Practice/text_{i}.txt' for i in range(1, 72)]
 practice_texts_eng = [f'Practice_eng/text_{i}.txt' for i in range(1, 55)]
 my_styles = ['background-color: rgb(255, 163, 144);', 'background-color: rgb(255, 206, 108);',
@@ -295,6 +294,9 @@ class MyWidget(QMainWindow):
         self.btn_change_lang.clicked.connect(self.change_lang)
         self.now_lang = 'rus'
 
+        self.widget_flag = False
+        self.wdg = None
+
     #########################################################################################################
     # FUNCTIONS #############################################################################################
     #########################################################################################################
@@ -355,6 +357,10 @@ class MyWidget(QMainWindow):
             button.setStyleSheet(self.main_style)
 
     def random_practice_text(self):
+        try:
+            self.wdg.close()
+        except AttributeError:
+            pass
         if self.now_lang == 'rus':
             text = choice(practice_texts)
         else:
@@ -440,9 +446,13 @@ class MyWidget(QMainWindow):
                         self.now_lang_buttons[next_letter].setStyleSheet('background-color: rgb(133, 255, 141);')
 
     def create_widget(self, num, style):
-        wdg = LessonWidget(self, num, style, self.now_lang)
-        wdg.setWindowTitle(f'Урок {num}')
-        wdg.show()
+        try:
+            self.wdg.close()
+        except AttributeError:
+            pass
+        self.wdg = LessonWidget(self, num, style, self.now_lang)
+        self.wdg.setWindowTitle(f'Урок {num}')
+        self.wdg.show()
 
 
 #############################################################################################################
