@@ -323,19 +323,20 @@ class MyWidget(QMainWindow):
             self.now_lang_buttons = self.my_buttons_rus
 
     def click_change_color(self, practice_or_lesson=False):
-        old_len = self.len_of_text
-        self.len_of_text = len(self.text_in_PTE)
-        if self.len_of_text > old_len:
-            if self.text_in_PTE[-1].isupper():
-                self.turn_gray_and_return(self.btn_Lshift)
-            last_letter = self.text_in_PTE.lower()[-1]
-            if last_letter in self.now_lang_buttons:
-                self.turn_gray_and_return(self.now_lang_buttons[last_letter])
-        else:
-            if not practice_or_lesson:
-                self.turn_gray_and_return(self.btn_backspace)
+        if not self.show_keyboard_checkBox.isChecked():
+            old_len = self.len_of_text
+            self.len_of_text = len(self.text_in_PTE)
+            if self.len_of_text > old_len:
+                if self.text_in_PTE[-1].isupper():
+                    self.turn_gray_and_return(self.btn_Lshift)
+                last_letter = self.text_in_PTE.lower()[-1]
+                if last_letter in self.now_lang_buttons:
+                    self.turn_gray_and_return(self.now_lang_buttons[last_letter])
             else:
-                self.btn_backspace.setStyleSheet(self.main_style)
+                if not practice_or_lesson:
+                    self.turn_gray_and_return(self.btn_backspace)
+                else:
+                    self.btn_backspace.setStyleSheet(self.main_style)
 
     def turn_gray_and_return(self, button):
         button.setStyleSheet("background-color: rgb(115, 115, 115);")
@@ -430,12 +431,13 @@ class MyWidget(QMainWindow):
             self.plainTextEdit.setStyleSheet('color: rgb(255, 0, 0);')
         else:
             self.plainTextEdit.setStyleSheet('color: rgb(232, 232, 232);')
-            if len(self.text_in_PTE) < len(self.text_in_PTE_2):
-                next_letter = self.text_in_PTE_2[len(self.text_in_PTE)].lower()
-                if next_letter in self.now_lang_buttons:
-                    for letter in self.now_lang_buttons:
-                        self.now_lang_buttons[letter].setStyleSheet(self.main_style)
-                    self.now_lang_buttons[next_letter].setStyleSheet('background-color: rgb(133, 255, 141);')
+            if not self.show_keyboard_checkBox.isChecked():
+                if len(self.text_in_PTE) < len(self.text_in_PTE_2):
+                    next_letter = self.text_in_PTE_2[len(self.text_in_PTE)].lower()
+                    if next_letter in self.now_lang_buttons:
+                        for letter in self.now_lang_buttons:
+                            self.now_lang_buttons[letter].setStyleSheet(self.main_style)
+                        self.now_lang_buttons[next_letter].setStyleSheet('background-color: rgb(133, 255, 141);')
 
     def create_widget(self, num, style):
         wdg = LessonWidget(self, num, style, self.now_lang)
