@@ -895,7 +895,10 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
         self.setWindowTitle('TypeWriter')
-        self.setWindowIcon(QIcon('../../Desktop/Индивидуальный проект с флешки/Клавиатура/keyboard_icon.ico'))
+        try:
+            self.setWindowIcon(QIcon('keyboard_icon.ico'))
+        except Exception as e:
+            print(e)
         # ПОЛЕ ДЛЯ ЧТЕНИЯ ТЕКСТА
         self.plainTextEdit_2.setReadOnly(True)
         # ЧЕКБОКС КЛАВИАТУРЫ

@@ -162,7 +162,10 @@ class LessonWidget(QMainWindow, Ui_LessonWindow):
     def __init__(self, obj, num, style, lang):
         super().__init__()
         self.setupUi(self)
-        self.setWindowIcon(QIcon('open-book.ico'))
+        try:
+            self.setWindowIcon(QIcon('open-book.ico'))
+        except Exception as e:
+            print(e)
         self.obj = obj
         self.lesson_number = num
         self.now_lang = lang
