@@ -1,0 +1,3 @@
+Round Brackets: (); Square Brackets: []; Curly Brackets: {}; Inequality Signs: <>; Ampersand: &; Vertical Bar: |
+Exclamation Mark: !; At Sign: @; Number Sign: #; Dollar Sign: $; Percent Sign: %; Caret: ^; Asterisk: *
+Equals Sign: =; Plus Sign: +; Minus Sign: -; Underscore: _; Slash: /; Grave Accent: `; Tilde: ~; Backslash: \
